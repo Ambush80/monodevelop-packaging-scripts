@@ -1,0 +1,5 @@
+*.sw*
+monodevelop
+linux-packaging-monodevelop
+artifacts
+build.log
