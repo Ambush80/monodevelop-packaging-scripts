@@ -80,7 +80,7 @@ function setup_env()
         exit 1
     fi
 
-    ARTIFACTS_PATH="${DIR}/artifacts/${VERSION}"
+    ARTIFACTS_PATH="${DIR}/artifacts/${LONG_VERSION}"
     mkdir -p "${ARTIFACTS_PATH}"
 
     echo "Version: ${LONG_VERSION}"
