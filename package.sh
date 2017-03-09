@@ -181,6 +181,13 @@ case $TYPE in
         build_dpkg
         ;;
 
+    debian)
+        setup_env
+        build_md_dist
+        build_dsc
+        build_dpkg
+        ;;
+
     dist)
         setup_env
         build_md_dist
