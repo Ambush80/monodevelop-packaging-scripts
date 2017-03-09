@@ -17,7 +17,7 @@ function setup_prereqs()
     echo "deb http://download.mono-project.com/repo/debian wheezy main" | sudo tee /etc/apt/sources.list.d/mono-xamarin.list
     echo "deb http://download.mono-project.com/repo/debian wheezy-apache24-compat main" | sudo tee -a /etc/apt/sources.list.d/mono-xamarin.list
     sudo apt-get update || exit 1
-    sudo apt-get install gtk-sharp2 mono-devel zlib1g-dev libmono-addins0.2-cil monodoc-base cmake libssh2-1-dev automake fsharp intltool gnome-sharp2 git referenceassemblies-pcl devscripts git-buildpackage pbuilder || exit 1
+    sudo apt-get install gtk-sharp2 mono-devel zlib1g-dev libmono-addins0.2-cil monodoc-base cmake libssh2-1-dev automake fsharp intltool gnome-sharp2 git referenceassemblies-pcl devscripts git-buildpackage pbuilder ca-certificates-mono || exit 1
 
     rm "${HOME}/.pbuilderrc"
 
