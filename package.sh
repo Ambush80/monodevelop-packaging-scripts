@@ -104,6 +104,13 @@ function build_md_dist()
     pushd "${MONODEVELOP_DIR}"
     git clean -xdf || exit 1
     git reset --hard HEAD || exit 1
+    local patches=`ls -1 "${DIR}/dist-patches"/[0-9]*`
+    local patch=""
+    for patch in ${patches};
+    do
+        echo "Applying $(basename ${patch})"
+        git apply "${patch}" || exit 1
+    done
     ./configure --profile default || exit 1
     make dist || exit 1
     popd

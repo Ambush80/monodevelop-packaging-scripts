@@ -1,0 +1,26 @@
+diff --git a/Makefile b/Makefile
+index cf2226d..6d7aa25 100644
+--- a/Makefile
++++ b/Makefile
+@@ -8,6 +8,12 @@ MONO_AOT:=MONO_PATH=$(AOT_DIRECTORIES):$(MONO_PATH) mono64 --aot --debug
+ 
+ all: update_submodules all-recursive
+ 
++NUGET_FOUND = $$(echo $$(which nuget))
++NUGET_RESTORE = mono external/nuget-binary/nuget.exe restore -verbosity detailed;
++
++restore-packages:
++	@cd main && $(NUGET_RESTORE)
++
+ GIT_FOUND = $$(echo $$(which git))
+ SYNC_SUBMODULES = \
+ 	if test -d ".git"; then \
+@@ -59,7 +65,7 @@ distclean: distclean-recursive
+ remove-stale-tarballs:
+ 	rm -rf tarballs
+ 
+-dist: update_submodules remove-stale-tarballs dist-recursive
++dist: update_submodules restore-packages remove-stale-tarballs dist-recursive
+ 	mkdir -p tarballs
+ 	for t in $(SUBDIRS); do \
+ 		if test -e $$t/*.tar.gz; then \
