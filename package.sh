@@ -30,6 +30,7 @@ BUILDRESULT=${RESULT_DIR}
 HOOKDIR=${HOOK_DIR}
 # Mount directories inside chroot environment
 BINDMOUNTS=\${BUILDRESULT}
+USENETWORK=yes
 # Bash prompt inside pbuilder
 export debian_chroot="pbuild\$$"
 # For D70results hook
