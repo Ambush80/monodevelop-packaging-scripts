@@ -113,6 +113,10 @@ function build_md_dist()
         git apply "${patch}" || exit 1
     done
     ./configure --profile default || exit 1
+    make update_submodules || exit 1
+    pushd main
+    make restore-packages || exit 1
+    popd
     make dist || exit 1
     popd
 }
